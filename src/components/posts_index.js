@@ -1,9 +1,28 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { connect }  from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { fetchPosts } from '../actions/index'
+import { Link } from 'react-router'
 
-const PostIndex = (props) => {
-    return (
-        <div>List of posts</div>
-    )
+class PostIndex extends Component {
+    componentWillMount() {
+        this.props.fetchPosts()
+    }
+    
+    render() {
+        return (
+            <div>
+                <Link to="/new" >Add a post</Link>
+            <div>List of posts</div>
+            </div>
+        )
+    }    
 }
 
-export default PostIndex
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({
+        fetchPosts: fetchPosts
+    }, dispatch)
+}
+
+export default connect(null, mapDispatchToProps)(PostIndex)
