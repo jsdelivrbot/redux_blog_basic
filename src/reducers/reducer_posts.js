@@ -5,12 +5,10 @@ const INITAL_STATE = {
 }
 
 export default function (state = INITAL_STATE, action) {
-
-    switch(action) {
+console.log("fetch posts ", FETCH_POSTS, "and ", action.payload)
+    switch(action.type) {
         case FETCH_POSTS: {
-            return {
-                ...state, all: action.payload.data
-            }
+            return {...state, all: action.payload.data}
         }
         default: {
             return state

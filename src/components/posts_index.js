@@ -9,14 +9,31 @@ class PostIndex extends Component {
         this.props.fetchPosts()
     }
     
+    renderPosts() {
+        console.log(this.props.posts)
+        return this.props.posts.map( (post) => {
+            return (<li>test
+                    </li>)
+        })
+    }
+
     render() {
         return (
             <div>
                 <Link to="/new" >Add a post</Link>
-            <div>List of posts</div>
+            <h3>List of posts</h3>
+                <ul>
+                    { this.renderPosts() }
+                </ul>
             </div>
         )
     }    
+}
+
+function mapStateToProps(state) {
+    return {
+        posts: state.posts.all
+    }
 }
 
 function mapDispatchToProps(dispatch) {
@@ -25,4 +42,4 @@ function mapDispatchToProps(dispatch) {
     }, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(PostIndex)
+export default connect(mapStateToProps, mapDispatchToProps)(PostIndex)
