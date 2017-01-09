@@ -10,9 +10,13 @@ class PostIndex extends Component {
     }
     
     renderPosts() {
-        console.log(this.props.posts)
         return this.props.posts.map( (post) => {
-            return (<li>test
+            return (<li key={post.id}>
+                    <Link to={'posts/' + post.id} >
+                        <h4>{post.title}</h4>
+                        <p>categories {post.categories}</p>
+                        <hr/>
+                    </Link>    
                     </li>)
         })
     }
@@ -20,7 +24,7 @@ class PostIndex extends Component {
     render() {
         return (
             <div>
-                <Link to="/new" >Add a post</Link>
+                <Link to="posts/new" >Add a post</Link>
             <h3>List of posts</h3>
                 <ul>
                     { this.renderPosts() }
