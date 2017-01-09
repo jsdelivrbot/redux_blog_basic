@@ -1,11 +1,23 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { fetchPost } from '../actions/index'
+import { fetchPost, deletePost } from '../actions/index'
 import { Link } from 'react-router'
 
 class ShowPosts extends Component {
+    static contextTypes = {
+        router: PropTypes.object
+    }
+
     componentWillMount(){
         this.props.fetchPost(this.props.params.id)
+    }
+    
+    deleter() {
+        console.log(this.props.deletePost)
+        this.props.deletePost(this.props.params.id)
+                  .then(() => {
+                      this.context.router.push("/")
+                  })
     }
     
     render() {
@@ -21,7 +33,8 @@ class ShowPosts extends Component {
             <p>{post.content}</p>
             <hr/>
             <p>Categories: {post.categories}</p>
-            <Link to="/" >Home</Link>
+            <button onClick={this.deleter.bind(this)} >Delete Post</button>
+            <br/><Link to="/" >Home</Link>
         </div>
         )
     }
@@ -33,4 +46,5 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {fetchPost})(ShowPosts)
+export default connect(mapStateToProps, 
+{fetchPost, deletePost})(ShowPosts)
