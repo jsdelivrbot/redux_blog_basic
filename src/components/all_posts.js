@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-const AllPosts = () => {
-    return (
-        <div>All Posts</div>
-    );
-};
+class AllPosts extends Component {
+    render() {
+        return (
+            <div>All Posts</div>
+        );
+    }
 
-export default AllPosts;
+}
+
+export default connect()(AllPosts);
