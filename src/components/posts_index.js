@@ -7,16 +7,32 @@ class PostsIndex extends Component {
         this.props.fetchPosts();
     }
 
+    renderPosts() {
+        return this.props.posts.map( (post) => {
+            return (
+                <li key={post.id}>
+                    <h4>Title: {post.title}</h4>
+                    <p><strong>Categories:</strong> {post.categories}</p>
+                </li>
+            );
+        });
+    }
+
     render() {
-        console.log(this.props.posts);
-        return <div>All the posts</div>;
+        return (
+            <div>
+                <h6>All the posts</h6>
+                <ul>
+                    { this.renderPosts() }
+                </ul>
+            </div>);
     }
     
 }
 
 function mapStateToProps(state) {
     return {
-        posts: state.posts
+        posts: state.posts.all
     };
 }
 
