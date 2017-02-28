@@ -1,7 +1,7 @@
 import React from 'react';
 
-const PostsShow = () => {
-    return <div>just one post</div>;
+const PostsShow = (props) => {
+    return <div>Show post number {props.params.id}</div>;
 };
 
 export default PostsShow;
