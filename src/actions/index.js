@@ -7,5 +7,11 @@ const API_KEY = '?key=zagnut';
 
 export function fetchPosts() {
     const url = `${ROOT_URL}/posts${API_KEY}`;
-};
+    const request = axios.get(url);
+
+    return {
+        type: FETCH_POSTS,
+        payload: request
+    };
+}
 
