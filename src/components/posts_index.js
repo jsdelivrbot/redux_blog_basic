@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../actions/index';
 import { Link } from 'react-router';
+import { fetchPosts } from '../actions/index';
 
 class PostsIndex extends Component {
     componentWillMount() {
@@ -9,13 +9,12 @@ class PostsIndex extends Component {
     }
 
     renderPosts() {
-        return this.props.posts.map( (post) => {
+        return this.props.posts.map((post) => {
             return (
                 <li key={post.id}>
-                    <Link to={('posts/' + post.id)} >
                     <h4>Title: {post.title}</h4>
                     <p><strong>Categories:</strong> {post.categories}</p>
-                    </Link>
+                    <Link to={(`posts/${post.id}`)} >View Post</Link>
                 </li>
             );
         });
