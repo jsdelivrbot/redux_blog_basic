@@ -17,6 +17,7 @@ class PostsShow extends Component {
         return (
             <div>
                 <h3>title: {post.title}</h3>
+                <p>{post.content}</p>
                 <p><strong>categories:</strong> {post.categories}</p>
                 <Link to="/">Home</Link>
             </div>
@@ -32,7 +33,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return bindActionCreators({
-        fetchPost: fetchPost
+        fetchPost
     }, dispatch);
 }
 
