@@ -14,7 +14,8 @@ class PostsIndex extends Component {
                 <li key={post.id}>
                     <h4>Title: {post.title}</h4>
                     <p><strong>Categories:</strong> {post.categories}</p>
-                    <Link to={(`posts/${post.id}`)} >View Post</Link>
+                    <Link to={(`posts/${post.id}`)} >View Post</Link> <br/>
+                    <Link to="posts/new" >create new post</Link>
                 </li>
             );
         });
